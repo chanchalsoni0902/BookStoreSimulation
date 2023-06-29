@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "U2tjWXYnVRwdmdoZ9oxetkSSsr0A/asbLDLKEBLVfUv4ABkhFSzMvhxhQcVBaPmj3LoO0PQ6+XfrY5pu2cm2uw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\bootcamp\\Desktop\\Chanchal\\Task\\BookStoreSimulation\\BookStoreSimulation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bootcamp\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
