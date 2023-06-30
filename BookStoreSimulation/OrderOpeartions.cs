@@ -3,6 +3,7 @@
     public class OrderOpeartions
     {
         public List<Order> Orders = new List<Order>();
+        public CustomerOperations customerOperations = new CustomerOperations();
         public FileHandler fileHandler = new FileHandler();
 
         public OrderOpeartions()
@@ -22,7 +23,7 @@
 
         public void AddOrder(Order order)
         {
-            order.Id = Orders.Count() + 1;
+            order.Id = GenerateId();
             Orders.Add(order);
             SaveDataToJsonFile();
         }
@@ -30,44 +31,47 @@
         public void DisplayAllOrders()
         {
             GetDataFromFile();
+            Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPric -> DateOfPurchase");
+
             Orders.ForEach(order =>
             {
-                Console.WriteLine($"{order.Id} -> {order.DateOfPurchase} -> {order.CustomerId} -> {order.TotalPrice} -> {order.TotalQuantity}");
+                Console.WriteLine($"{order.Id} -> {order.CustomerId} -> {order.TotalQuantity} -> {order.TotalPrice}  ->  -> {order.DateOfPurchase}");
             });
         }
 
         public void DisplayOrderById(int id)
         {
             GetDataFromFile();
-            Order order = Orders.SingleOrDefault(ord => ord.Id == id);
+            Order order = GetOrder(id);
             if (order == null)
             {
                 Console.WriteLine("Order not found");
             }
             else
             {
-                Console.WriteLine($"{order.Id} -> {order.DateOfPurchase} -> {order.CustomerId} -> {order.TotalPrice} -> {order.TotalQuantity}");
+                Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPric -> DateOfPurchase");
+                Console.WriteLine($"{order.Id} -> {order.CustomerId} -> {order.TotalQuantity} -> {order.TotalPrice}  ->  -> {order.DateOfPurchase}");
             }
         }
 
-        public void UpdateCustomer(int customerId, Customer customer)
+        public void UpdateOrder(Order order)
         {
-            Order ord = Orders.SingleOrDefault(customer => customer.Id == customerId);
+            Order ord = GetOrder(order.Id);
             if (ord == null)
             {
                 Console.WriteLine("Order not found");
             }
             else
             {
-                ord.DateOfPurchase = ord.DateOfPurchase;
-                ord.CustomerId = ord.CustomerId;
+                ord.DateOfPurchase = order.DateOfPurchase;
+                ord.CustomerId = order.CustomerId;
             }
             SaveDataToJsonFile();
         }
 
-        public void RemoveOrder(int customerId)
+        public void RemoveOrder(int orderId)
         {
-            Order order = Orders.SingleOrDefault(ord => ord.Id == customerId);
+            Order order = GetOrder(orderId);
             if (order == null)
             {
                 Console.WriteLine("Order not found");
@@ -82,8 +86,11 @@
         public void SellBooks(int customerId, List<Book> books)
         {
             Order order = new Order();
-            order.Id = Orders.Count() + 1;
+            order.DateOfPurchase = DateTime.Now.GetDate();
+            order.Id = GenerateId();
+            order.Books = books;
             order.CustomerId = customerId;
+            Customer customer = customerOperations.GetCustomerById(customerId);
 
             int totalQuantity = 0;
             float totalPrice = 0;
@@ -96,9 +103,31 @@
 
             order.TotalQuantity = totalQuantity;
             order.TotalPrice = totalPrice;
-            Console.WriteLine($"You bought {totalQuantity} for Rs. {totalPrice}");
             Orders.Add(order);
             SaveDataToJsonFile();
+
+            Console.WriteLine($"\nName: {customer.Name} \nContact: {customer.Contact}");
+            Console.WriteLine($"Total Items:  {totalQuantity}");
+            Console.WriteLine($"Total Price Rs. {totalPrice}");
+            Console.WriteLine($"Date of Purchase: {order.DateOfPurchase}");            
+        }
+
+        public Order GetOrder( int orderId )
+        {
+            return Orders.SingleOrDefault(item => item.Id == orderId);
+        }
+
+        public int GenerateId()
+        {
+            Order data = Orders.LastOrDefault();
+            if (data == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return data.Id + 1;
+            }
         }
     }
 }

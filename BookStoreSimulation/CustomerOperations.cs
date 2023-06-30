@@ -1,4 +1,6 @@
-﻿namespace BookStoreSimulation
+﻿using static System.Reflection.Metadata.BlobBuilder;
+
+namespace BookStoreSimulation
 {
     public class CustomerOperations
     {
@@ -22,7 +24,7 @@
 
         public void AddCustomer(Customer customer)
         {
-            customer.Id = Customers.Count() + 1;
+            customer.Id = GenerateId();
             Customers.Add(customer);
             SaveDataToJsonFile();
         }
@@ -30,29 +32,59 @@
         public void DisplayAllCustomer()
         {
             GetDataFromFile();
+            Console.WriteLine("\nId -> Name -> Contact -> Email -> Address");
             Customers.ForEach(customer =>
             {
-                Console.WriteLine($"{customer.Id} -> {customer.Name} -> {customer.Address} -> {customer.Contact}");
+                Console.WriteLine($"{customer.Id} -> {customer.Name} -> {customer.Contact} -> {customer.Email} -> {customer.Email}");
             });
         }
 
         public void DisplayCustomerById(int id) 
         {
             GetDataFromFile();
-            Customer customer = Customers.SingleOrDefault(cs => cs.Id == id);
+            Customer customer = GetCustomer(id);
             if (customer == null) 
             {
                 Console.WriteLine("Customer not found");
             }
             else
             {
-                Console.WriteLine($"{customer.Id} -> {customer.Name} -> {customer.Address} -> {customer.Contact}");
+                Console.WriteLine("\nId -> Name -> Contact -> Email -> Address");
+                Console.WriteLine($"{customer.Id} -> {customer.Name} -> {customer.Contact} -> {customer.Email} -> {customer.Email}");
+            }
+        }
+
+        public Customer GetCustomer(int id)
+        {
+            try
+            {
+                return Customers.SingleOrDefault(customer => customer.Id == id);
+            }
+            catch (Exception ex) 
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public Customer GetCustomerById(int id)
+        {
+            GetDataFromFile();
+            Customer customer = GetCustomer(id);
+            if (customer == null)
+            {
+                Console.WriteLine("Customer not found");
+                return null;
+            }
+            else
+            {
+                return customer;
             }
         }
 
         public void UpdateCustomer(Customer customer)
         {
-            Customer cs = Customers.SingleOrDefault(customer => customer.Id == customer.Id);
+            Customer cs = GetCustomer(customer.Id);
             if (cs == null)
             {
                 Console.WriteLine("Customer not found");
@@ -68,7 +100,7 @@
 
         public void RemoveCustomer(int customerId)
         {
-            Customer cs = Customers.SingleOrDefault(customer => customer.Id == customerId);
+            Customer cs = GetCustomer(customerId);
             if (cs == null)
             {
                 Console.WriteLine("Customer not found");
@@ -78,6 +110,19 @@
                 Customers.Remove(cs);
             }
             SaveDataToJsonFile();
+        }
+
+        public int GenerateId()
+        {
+            Customer data = Customers.LastOrDefault();
+            if (data == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return data.Id + 1;
+            }
         }
 
     }

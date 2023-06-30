@@ -8,7 +8,8 @@
         public float Price;
         public int Quantity;
         public int Version;
-        public DateTime CreatedOn;
-        public DateTime UpdatedOn;
+        public DateOnly CreatedOn;
+        public DateOnly UpdatedOn;
+        public DateOnly? SellingDate;
     }
 }

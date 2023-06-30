@@ -1,13 +1,14 @@
 ﻿using BookStoreSimulation;
+using System;
+using System.Security.Cryptography;
 
 public class Program
 {
     static BookOperations bookOperations = new BookOperations();
     static OrderOpeartions orderOperations = new OrderOpeartions();
     static CustomerOperations customerOperations = new CustomerOperations();
-    public static void Main(string[] args)
+    public static void Main()
     {
-
         while (true)
         {
             try
@@ -88,8 +89,26 @@ public class Program
                         int orderId = int.Parse(Console.ReadLine());
                         orderOperations.DisplayOrderById(orderId);
                         break;
+                    case 14:
+                        // Remove order
+                        Console.WriteLine("Enter order id: ");
+                        int ordrId = int.Parse(Console.ReadLine());
+                        orderOperations.RemoveOrder(ordrId);
+                        break;
+                    case 15:
+                        // Update order
+                        Console.WriteLine("Enter order id: ");
+                        int oId = int.Parse(Console.ReadLine());
+                        Order order = new Order();
+                        order.Id = oId;
+                        Console.WriteLine("Enter Date of purchase: ");
+                        order.DateOfPurchase = DateOnly.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter Customer id: ");
+                        order.CustomerId = int.Parse(Console.ReadLine());
+                        orderOperations.UpdateOrder(order);
+                        break;
 
-                        // Customers
+                    // Customers
                     case 21:
                         // Add customer
                         Customer customer = new Customer();
@@ -99,6 +118,8 @@ public class Program
                         customer.Contact = Console.ReadLine();
                         Console.WriteLine("Enter address: ");
                         customer.Address = Console.ReadLine();
+                        Console.WriteLine("Enter email: ");
+                        customer.Email = Console.ReadLine();
 
                         customerOperations.AddCustomer(customer);
                         break;
@@ -165,8 +186,8 @@ public class Program
         Console.WriteLine("Enter version: ");
         book.Version = int.Parse(Console.ReadLine());
 
-        book.CreatedOn = DateTime.Now;
-        book.UpdatedOn = DateTime.Now;
+        book.CreatedOn = DateTime.Now.GetDate();
+        book.UpdatedOn = DateTime.Now.GetDate();
 
         bookOperations.AddBook(book);
     }
@@ -174,53 +195,64 @@ public class Program
     public static void DisplayMenu()
     {
         Console.WriteLine("\nSelect from the following option: ");
-
         Console.WriteLine("1. Add new book.");
         Console.WriteLine("2. Display all books.");
         Console.WriteLine("3. Find book.");
         Console.WriteLine("4. Update book.");
         Console.WriteLine("5. Update quantity.");
         Console.WriteLine("6. Remove Book.");
-
+        Console.WriteLine();
         Console.WriteLine("11. Sell book.");
         Console.WriteLine("12. Display all orders.");
         Console.WriteLine("13. Find order.");
-
+        Console.WriteLine("14. Remove order.");
+        Console.WriteLine("15. Update order.");
+        Console.WriteLine();
         Console.WriteLine("21. Add new customer."); 
         Console.WriteLine("22. Update customer.");
         Console.WriteLine("23. Display all customers.");
         Console.WriteLine("24. Find customer.");
-
+        Console.WriteLine("25. Remove customer.");
+        Console.WriteLine();
         Console.WriteLine("0. Exit\n");
     }
 
     public static void SellBooks()
     {
+        // list of books customer want to purchase
         List<Book> myBooks = new List<Book>();
        while (true)
-        {
-            
+        {            
             bookOperations.DisplayAllBook();
             Console.WriteLine("Enter 0 for generate receipt");
-            Console.WriteLine("\nSelect book: ");
-
+            Console.WriteLine("Select book: ");
             int bookId = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter CustomerId: ");
-            int customerId = int.Parse(Console.ReadLine());
 
             if (bookId == 0)
             {
+                Console.WriteLine("Enter CustomerId: ");
+                int customerId = int.Parse(Console.ReadLine());
                 orderOperations.SellBooks(customerId, myBooks);
-                return;
+                break;
             }
-
+            
             Console.WriteLine("\nEnter quatity: ");
             int qty = int.Parse(Console.ReadLine());        
 
-            Book book = bookOperations.ValidateAndGetBook(bookId, qty);
-            myBooks.Add(book);
-
-            
+            Book book = bookOperations.ValidateQuantityAndGetBook(bookId, qty);
+            if(book != null)
+            {
+                Book myBuk = myBooks.SingleOrDefault(x => x.Id == bookId);
+                if (myBuk == null)
+                {
+                    book.SellingDate = DateTime.Now.GetDate();
+                    myBooks.Add(book);
+                }
+                else
+                {
+                    myBuk.Quantity = myBuk.Quantity + book.Quantity;
+                }
+            }                      
         }
     }
 }

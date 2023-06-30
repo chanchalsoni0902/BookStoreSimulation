@@ -1,1 +1,68 @@
-[{"Id":1,"Title":"ML","Author":"dwhi","Price":70.0,"Quantity":5,"Version":1,"CreatedOn":"2023-06-29T17:40:38.4065233+05:30","UpdatedOn":"2023-06-29T17:40:38.4084319+05:30"},{"Id":2,"Title":"DS","Author":"jfw","Price":70.0,"Quantity":2,"Version":22,"CreatedOn":"2023-06-29T17:41:05.677252+05:30","UpdatedOn":"2023-06-29T17:41:05.6772526+05:30"},{"Id":3,"Title":"AI","Author":"sdf","Price":60.0,"Quantity":2,"Version":1,"CreatedOn":"2023-06-29T17:41:28.7892676+05:30","UpdatedOn":"2023-06-29T17:41:28.7892681+05:30"}]
+[
+  {
+    "Id": 1,
+    "Title": "Data Science",
+    "Author": "DS",
+    "Price": 55.0,
+    "Quantity": 2,
+    "Version": 0,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  },
+  {
+    "Id": 2,
+    "Title": "Fuzzy Logics",
+    "Author": "Fz",
+    "Price": 80.0,
+    "Quantity": 4,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  },
+  {
+    "Id": 3,
+    "Title": "Python",
+    "Author": "Py",
+    "Price": 70.0,
+    "Quantity": 4,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  },
+  {
+    "Id": 4,
+    "Title": "AI",
+    "Author": "Aii",
+    "Price": 34.0,
+    "Quantity": 2,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  },
+  {
+    "Id": 5,
+    "Title": "Data Structure",
+    "Author": "Ds",
+    "Price": 60.0,
+    "Quantity": 4,
+    "Version": 2,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  },
+  {
+    "Id": 6,
+    "Title": "Neural Network",
+    "Author": "NN",
+    "Price": 59.0,
+    "Quantity": 2,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30",
+    "SellingDate": null
+  }
+]

@@ -1,4 +1,6 @@
-﻿namespace BookStoreSimulation
+﻿using System.Net;
+
+namespace BookStoreSimulation
 {
     public class BookOperations
     {
@@ -21,7 +23,8 @@
 
         public void AddBook(Book book)
         {
-            book.Id = Books.Count() + 1;
+            book.Id = GenerateId();
+            book.CreatedOn = DateTime.Now.GetDate();
             Books.Add(book);
             SaveDataToJsonFile();
         }
@@ -38,7 +41,8 @@
 
         public void DisplayById(int bookId)
         {
-            Book bk = Books.SingleOrDefault(book => book.Id == bookId);
+            GetDataFromFile();
+            Book bk = GetBook(bookId);
             if (bk == null)
             {
                 Console.WriteLine("Book not found");
@@ -48,12 +52,11 @@
                 Console.WriteLine("\nId -> Author -> Title -> Quantity -> Price -> LastUpdate");
                 Console.WriteLine($"{bk.Id} -> {bk.Author} -> {bk.Title} -> {bk.Quantity} -> {bk.UpdatedOn}");
             }
-
         }
 
         public void UpdateBook(Book book)
         {
-            Book bk = Books.SingleOrDefault(book => book.Id == book.Id);
+            Book bk = GetBook(book.Id);
             if (bk == null)
             {
                 Console.WriteLine("Book not found");
@@ -64,16 +67,15 @@
                 bk.Title = book.Title;
                 bk.Price = book.Price;
                 bk.Quantity = book.Quantity;
-                bk.UpdatedOn = book.UpdatedOn;
                 bk.Version = book.Version;
-                bk.UpdatedOn = DateTime.Now;
+                bk.UpdatedOn = DateTime.Now.GetDate();
             }
             SaveDataToJsonFile();
         }
 
         public void RemoveBook(int bookId)
         {
-            Book bk = Books.SingleOrDefault(book => book.Id == bookId);
+            Book bk = GetBook(bookId);
             if (bk == null)
             {
                 Console.WriteLine("Book not found");
@@ -82,12 +84,11 @@
             {
                 Books.Remove(bk);
             }
-            SaveDataToJsonFile();
-        }
+            SaveDataToJsonFile();        }
 
         public void UpdateQuantity(int bookId, int quantity)
         {
-            Book book = Books.SingleOrDefault(bk => bk.Id == bookId);
+            Book book = GetBook(bookId);
             if (book == null)
             {
                 Console.WriteLine("Book not found");
@@ -99,9 +100,22 @@
             SaveDataToJsonFile();
         }
 
-        public Book ValidateAndGetBook(int bookId, int quantity)
+        public Book GetBook(int id)
         {
-            Book book = Books.SingleOrDefault(bk => bk.Id == bookId);
+            try
+            {
+                return Books.SingleOrDefault(item => item.Id == id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        public Book ValidateQuantityAndGetBook(int bookId, int quantity)
+        {
+            Book book = GetBook(bookId);
             if(book == null)
             {
                 Console.WriteLine("Invalid Selection");
@@ -115,6 +129,8 @@
             else
             {
                 book.Quantity = book.Quantity - quantity;
+
+                // book customer want to purchase
                 Book myBook = new Book();
                 myBook.Id = bookId;
                 myBook.Quantity = quantity;
@@ -126,6 +142,19 @@
                 myBook.Title = book.Title;
                 SaveDataToJsonFile();
                 return myBook;
+            }
+        }
+        
+        public int GenerateId()
+        {
+            Book book = Books.LastOrDefault();
+            if(book == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return book.Id + 1;
             }
         }
     }

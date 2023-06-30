@@ -1,1 +1,142 @@
-[{"Id":1,"Books":[],"CustomerId":0,"TotalQuantity":6,"TotalPrice":810.0,"DateOfPurchase":"0001-01-01T00:00:00"}]
+[
+  {
+    "Id": 1,
+    "Books": [
+      {
+        "Id": 1,
+        "Title": "Data Science",
+        "Author": "DS",
+        "Price": 55.0,
+        "Quantity": 1,
+        "Version": 0,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 1,
+    "TotalQuantity": 1,
+    "TotalPrice": 55.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 2,
+    "Books": [
+      {
+        "Id": 2,
+        "Title": "Fuzzy Logics",
+        "Author": "Fz",
+        "Price": 80.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 2,
+    "TotalQuantity": 1,
+    "TotalPrice": 80.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 3,
+    "Books": [
+      {
+        "Id": 3,
+        "Title": "Python",
+        "Author": "Py",
+        "Price": 70.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 3,
+    "TotalQuantity": 1,
+    "TotalPrice": 70.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 4,
+    "Books": [
+      {
+        "Id": 4,
+        "Title": "AI",
+        "Author": "Aii",
+        "Price": 34.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 4,
+    "TotalQuantity": 1,
+    "TotalPrice": 34.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 5,
+    "Books": [
+      {
+        "Id": 5,
+        "Title": "Data Structure",
+        "Author": "Ds",
+        "Price": 60.0,
+        "Quantity": 2,
+        "Version": 2,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 5,
+    "TotalQuantity": 2,
+    "TotalPrice": 120.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 6,
+    "Books": [
+      {
+        "Id": 6,
+        "Title": "Neural Network",
+        "Author": "NN",
+        "Price": 59.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 1,
+    "TotalQuantity": 1,
+    "TotalPrice": 59.0,
+    "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 7,
+    "Books": [
+      {
+        "Id": 6,
+        "Title": "Neural Network",
+        "Author": "NN",
+        "Price": 59.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-06-30",
+        "UpdatedOn": "2023-06-30",
+        "SellingDate": "2023-06-30"
+      }
+    ],
+    "CustomerId": 6,
+    "TotalQuantity": 1,
+    "TotalPrice": 59.0,
+    "DateOfPurchase": "2023-06-30"
+  }
+]

@@ -4,7 +4,8 @@
     {
         public int Id;
         public string Name;
-        public string Address;
         public string Contact;
+        public string Email;
+        public string Address;
     }
 }

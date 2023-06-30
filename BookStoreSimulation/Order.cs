@@ -7,6 +7,6 @@
         public int CustomerId;
         public int TotalQuantity;
         public float TotalPrice;
-        public DateTime DateOfPurchase;
+        public DateOnly DateOfPurchase;
     }
 }
