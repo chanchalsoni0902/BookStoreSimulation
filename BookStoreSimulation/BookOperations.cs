@@ -73,6 +73,56 @@ namespace BookStoreSimulation
             SaveDataToJsonFile();
         }
 
+        public void SearchAndDisplayBookByAuthor(string author)
+        {
+            try
+            {
+                GetDataFromFile();
+                Console.WriteLine("\nId -> Title -> Author -> Quantity -> Price -> LastUpdate");
+                List<Book> searchedBooks = Books.Where(book => book.Author.ToLower().Contains(author.ToLower())).ToList();
+                if (searchedBooks == null || searchedBooks.Count < 1)
+                {
+                    Console.WriteLine("Book not found");
+                }
+                else
+                {
+                    searchedBooks.ForEach(book =>
+                    {
+                        Console.WriteLine($"{book.Id} -> {book.Title} -> {book.Author} -> {book.Quantity} -> {book.Price} -> {book.UpdatedOn}");
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        public void SearchAndDisplayBookByTitle(string title)
+        {
+            try
+            {
+                GetDataFromFile();
+                Console.WriteLine("\nId -> Title -> Author -> Quantity -> Price -> LastUpdate");
+                List<Book> searchedBooks = Books.Where(book => book.Title.ToLower().Contains(title.ToLower())).ToList();
+                if (searchedBooks == null || searchedBooks.Count < 1)
+                {
+                    Console.WriteLine("Book not found");
+                }
+                else
+                {
+                    searchedBooks.ForEach(book =>
+                    {
+                        Console.WriteLine($"{book.Id} -> {book.Title} -> {book.Author} -> {book.Quantity} -> {book.Price} -> {book.UpdatedOn}");
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
         public void RemoveBook(int bookId)
         {
             Book bk = GetBook(bookId);
@@ -84,7 +134,8 @@ namespace BookStoreSimulation
             {
                 Books.Remove(bk);
             }
-            SaveDataToJsonFile();        }
+            SaveDataToJsonFile();
+        }
 
         public void UpdateQuantity(int bookId, int quantity)
         {
@@ -116,7 +167,7 @@ namespace BookStoreSimulation
         public Book ValidateQuantityAndGetBook(int bookId, int quantity)
         {
             Book book = GetBook(bookId);
-            if(book == null)
+            if (book == null)
             {
                 Console.WriteLine("Invalid Selection");
                 return null;
@@ -144,11 +195,11 @@ namespace BookStoreSimulation
                 return myBook;
             }
         }
-        
+
         public int GenerateId()
         {
-            Book book = Books.LastOrDefault();
-            if(book == null)
+            Book book = Books.OrderBy(item => item.Id).LastOrDefault();
+            if (book == null)
             {
                 return 1;
             }

@@ -10,8 +10,7 @@
         "Quantity": 1,
         "Version": 0,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 1,
@@ -30,8 +29,7 @@
         "Quantity": 1,
         "Version": 1,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 2,
@@ -50,8 +48,7 @@
         "Quantity": 1,
         "Version": 1,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 3,
@@ -70,8 +67,7 @@
         "Quantity": 1,
         "Version": 1,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 4,
@@ -90,8 +86,7 @@
         "Quantity": 2,
         "Version": 2,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 5,
@@ -110,8 +105,7 @@
         "Quantity": 1,
         "Version": 1,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 1,
@@ -130,13 +124,79 @@
         "Quantity": 1,
         "Version": 1,
         "CreatedOn": "2023-06-30",
-        "UpdatedOn": "2023-06-30",
-        "SellingDate": "2023-06-30"
+        "UpdatedOn": "2023-06-30"
       }
     ],
     "CustomerId": 6,
     "TotalQuantity": 1,
     "TotalPrice": 59.0,
     "DateOfPurchase": "2023-06-30"
+  },
+  {
+    "Id": 8,
+    "Books": [
+      {
+        "Id": 2,
+        "Title": "Fuzzy Logics",
+        "Author": "Fz",
+        "Price": 80.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-07-03",
+        "UpdatedOn": "2023-06-30"
+      }
+    ],
+    "CustomerId": 1,
+    "TotalQuantity": 1,
+    "TotalPrice": 80.0,
+    "DateOfPurchase": "2023-07-03"
+  },
+  {
+    "Id": 9,
+    "Books": [
+      {
+        "Id": 5,
+        "Title": "Data Structure",
+        "Author": "Ds",
+        "Price": 60.0,
+        "Quantity": 2,
+        "Version": 2,
+        "CreatedOn": "2023-07-03",
+        "UpdatedOn": "2023-06-30"
+      },
+      {
+        "Id": 6,
+        "Title": "Neural Network",
+        "Author": "NN",
+        "Price": 59.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-07-03",
+        "UpdatedOn": "2023-06-30"
+      }
+    ],
+    "CustomerId": 1,
+    "TotalQuantity": 3,
+    "TotalPrice": 179.0,
+    "DateOfPurchase": "2023-07-03"
+  },
+  {
+    "Id": 10,
+    "Books": [
+      {
+        "Id": 8,
+        "Title": "Web Dev",
+        "Author": "wd",
+        "Price": 70.0,
+        "Quantity": 1,
+        "Version": 1,
+        "CreatedOn": "2023-07-03",
+        "UpdatedOn": "2023-07-03"
+      }
+    ],
+    "CustomerId": 1,
+    "TotalQuantity": 1,
+    "TotalPrice": 70.0,
+    "DateOfPurchase": "2023-07-03"
   }
 ]

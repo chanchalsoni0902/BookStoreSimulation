@@ -114,7 +114,7 @@ namespace BookStoreSimulation
 
         public int GenerateId()
         {
-            Customer data = Customers.LastOrDefault();
+            Customer data = Customers.OrderBy(item => item.Id).LastOrDefault();
             if (data == null)
             {
                 return 1;

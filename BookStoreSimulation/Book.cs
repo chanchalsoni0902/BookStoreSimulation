@@ -10,6 +10,6 @@
         public int Version;
         public DateOnly CreatedOn;
         public DateOnly UpdatedOn;
-        public DateOnly? SellingDate;
+        
     }
 }

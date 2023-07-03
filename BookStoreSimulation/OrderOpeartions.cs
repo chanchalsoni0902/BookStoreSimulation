@@ -98,7 +98,7 @@
             books.ForEach(book =>
             {
                 totalQuantity = totalQuantity +  book.Quantity;
-                totalPrice = (totalPrice + book.Price) * book.Quantity;
+                totalPrice = totalPrice + (book.Price * book.Quantity);
             });
 
             order.TotalQuantity = totalQuantity;
@@ -119,7 +119,7 @@
 
         public int GenerateId()
         {
-            Order data = Orders.LastOrDefault();
+            Order data = Orders.OrderBy(item => item.Id).LastOrDefault();
             if (data == null)
             {
                 return 1;
