@@ -167,7 +167,13 @@ public class Program
                         break;
                     case 31:
                         // Generate sales report
-                        salesReport.GenerateReport();
+                        salesReport.GenerateMonthlyReport();
+                        break;
+                    case 32:
+                        // Generate sales report
+                        Console.WriteLine("Enter month number: ");
+                        int monthNumber = int.Parse(Console.ReadLine());
+                        salesReport.DisplayPercentRevenueForMonth(monthNumber);
                         break;
 
                     default:
@@ -181,6 +187,36 @@ public class Program
             }
         }
 
+    }   
+
+    public static void DisplayMenu()
+    {
+        Console.WriteLine("\nSelect from the following option: ");
+        Console.WriteLine("1. Add new book.");
+        Console.WriteLine("2. Display all books.");
+        Console.WriteLine("3. Find book.");
+        Console.WriteLine("4. Update book.");
+        Console.WriteLine("5. Update quantity.");
+        Console.WriteLine("6. Remove Book.");
+        Console.WriteLine("7. Search book by author's name");
+        Console.WriteLine("8. Search book by title");
+        Console.WriteLine();
+        Console.WriteLine("11. Sell book.");
+        Console.WriteLine("12. Display all orders.");
+        Console.WriteLine("13. Find order.");
+        Console.WriteLine("14. Remove order.");
+        Console.WriteLine("15. Update order.");
+        Console.WriteLine();
+        Console.WriteLine("21. Add new customer.");
+        Console.WriteLine("22. Update customer.");
+        Console.WriteLine("23. Display all customers.");
+        Console.WriteLine("24. Find customer.");
+        Console.WriteLine("25. Remove customer.");
+        Console.WriteLine();
+        Console.WriteLine("31. Generate sales report.");
+        Console.WriteLine("32. Generate percent revenue for month");
+        Console.WriteLine();
+        Console.WriteLine("0. Exit\n");
     }
 
     public static void GetDataFromUserAndAddBook()
@@ -202,39 +238,7 @@ public class Program
         Console.WriteLine("Enter version: ");
         book.Version = int.Parse(Console.ReadLine());
 
-        book.CreatedOn = DateTime.Now.GetDate();
-        book.UpdatedOn = DateTime.Now.GetDate();
-
         bookOperations.AddBook(book);
-    }
-
-    public static void DisplayMenu()
-    {
-        Console.WriteLine("\nSelect from the following option: ");
-        Console.WriteLine("1. Add new book.");
-        Console.WriteLine("2. Display all books.");
-        Console.WriteLine("3. Find book.");
-        Console.WriteLine("4. Update book.");
-        Console.WriteLine("5. Update quantity.");
-        Console.WriteLine("6. Remove Book.");
-        Console.WriteLine("7. Display book by author's name");
-        Console.WriteLine("8. Display book by title");
-        Console.WriteLine();
-        Console.WriteLine("11. Sell book.");
-        Console.WriteLine("12. Display all orders.");
-        Console.WriteLine("13. Find order.");
-        Console.WriteLine("14. Remove order.");
-        Console.WriteLine("15. Update order.");
-        Console.WriteLine();
-        Console.WriteLine("21. Add new customer.");
-        Console.WriteLine("22. Update customer.");
-        Console.WriteLine("23. Display all customers.");
-        Console.WriteLine("24. Find customer.");
-        Console.WriteLine("25. Remove customer.");
-        Console.WriteLine();
-        Console.WriteLine("31. Generate sales report.");
-        Console.WriteLine();
-        Console.WriteLine("0. Exit\n");
     }
 
     public static void SellBooks()

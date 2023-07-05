@@ -86,11 +86,10 @@
         public void SellBooks(int customerId, List<Book> books)
         {
             Order order = new Order();
-            order.DateOfPurchase = DateTime.Now.GetDate();
+            order.DateOfPurchase = DateOnly.FromDateTime(DateTime.Now);
             order.Id = GenerateId();
             order.Books = books;
             order.CustomerId = customerId;
-            Customer customer = customerOperations.GetCustomerById(customerId);
 
             int totalQuantity = 0;
             float totalPrice = 0;
@@ -106,6 +105,7 @@
             Orders.Add(order);
             SaveDataToJsonFile();
 
+            Customer customer = customerOperations.GetCustomerById(customerId);
             Console.WriteLine($"\nName: {customer.Name} \nContact: {customer.Contact}");
             Console.WriteLine($"Total Items:  {totalQuantity}");
             Console.WriteLine($"Total Price Rs. {totalPrice}");

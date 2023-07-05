@@ -24,7 +24,8 @@ namespace BookStoreSimulation
         public void AddBook(Book book)
         {
             book.Id = GenerateId();
-            book.CreatedOn = DateTime.Now.GetDate();
+            book.CreatedOn = DateOnly.FromDateTime(DateTime.Now);
+            book.UpdatedOn = DateOnly.FromDateTime(DateTime.Now);
             Books.Add(book);
             SaveDataToJsonFile();
         }
@@ -68,7 +69,7 @@ namespace BookStoreSimulation
                 bk.Price = book.Price;
                 bk.Quantity = book.Quantity;
                 bk.Version = book.Version;
-                bk.UpdatedOn = DateTime.Now.GetDate();
+                bk.UpdatedOn = DateOnly.FromDateTime(DateTime.Now);
             }
             SaveDataToJsonFile();
         }

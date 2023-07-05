@@ -3,62 +3,73 @@
     public class SalesReport
     {
         FileHandler fileHandler = new FileHandler();
-        List<Book> soldBooks = new List<Book>();
 
-        public void GenerateReport()
+        public void GenerateMonthlyReport()
         {
-            int totalSales = GetTotalSales();
-            ExtractBook();
-
-            List<BookResult> books = soldBooks
-                .GroupBy(item => item.Id)
-                .SelectMany(data => data.Select(book => new BookResult()
-                {
-                    Id = book.Id,
-                    Quantity = data.Count(),
-                    Title = book.Title,
-                    Author = book.Author
-                })).ToList();
-
-            // Diaplay Report
-            BookResult topSellingBook = books.OrderByDescending(prop => prop.Quantity).First();
-            Console.WriteLine($"TotalSales: {totalSales}");
-            Console.WriteLine($"Top Selling Book: \n Id: {topSellingBook.Id} -> Title: {topSellingBook.Title}");
-        }
-
-        private int GetTotalSales()
-        {
-            int total = 0;
             List<Order> orders = fileHandler.GetOrders();
-            orders.ForEach(item =>
+            List<MonthlyReport> report = orders.GroupBy(prop => prop.DateOfPurchase.Month)
+                .Select(order => new MonthlyReport()
+                {
+                    Month = GetMonthName(order.Key),
+                    TotalQutantitySold = order.Sum(s => s.TotalQuantity),
+                    TotalRevenue = order.Sum(s => s.TotalPrice)
+                }).ToList();
+
+            report.ForEach(reportItem =>
             {
-                total += item.TotalQuantity;
+                Console.WriteLine($"Month: {reportItem.Month}, Total Quantity Sold: {reportItem.TotalQutantitySold}, Total Revenue: ${reportItem.TotalRevenue}");
             });
-            return total;
         }
 
-        private void ExtractBook()
+        public void DisplayPercentRevenueForMonth(int month)
         {
+            int prevMonth = month - 1;  
+
             List<Order> orders = fileHandler.GetOrders();
-            if (orders == null || orders.Count() < 1)
-            {
-                Console.WriteLine("No orders found!!");
-            }
-            else
-            {
-                orders.ForEach(item =>
+            List<MonthlyReport> monthlyReports = orders.GroupBy(prop => prop.DateOfPurchase.Month)
+                .Select(order => new MonthlyReport()
                 {
-                    soldBooks.AddRange(item.Books);
-                });
+                    MonthNumber = order.Key,
+                    Month = GetMonthName(order.Key),
+                    TotalQutantitySold = order.Sum(s => s.TotalQuantity),
+                    TotalRevenue = order.Sum(s => s.TotalPrice)
+                }).ToList();
+
+            MonthlyReport prev = monthlyReports.SingleOrDefault(m => m.MonthNumber == prevMonth);
+            if(prev == null)
+            {
+                Console.WriteLine("Sorry could not calculate revenue % as historic data is not sufficientl");
+                return;
             }
+            MonthlyReport current = monthlyReports.SingleOrDefault(m => m.MonthNumber == month);
+            if(current == null)
+            {
+                Console.WriteLine("Sorry could not calculate revenue % as data is not sufficient");
+                return;
+            }
+
+            float prevRevenue = prev.TotalRevenue;
+            float currentRevenue = current.TotalRevenue;
+
+            float diff = (prevRevenue - currentRevenue);
+            float percent = (diff / prevRevenue)*100;
+
+            Console.WriteLine($"Revenue percent for this month is {percent} %");
+        }
+
+        private string GetMonthName(int month)
+        {
+            DateTime dt = new DateTime(2023, month, 1);
+
+            return dt.ToString("MMMM");
         }
     }
 }
 
-public class BookResult
+public class MonthlyReport
 {
-    public int Id;
-    public int Quantity;
-    public string Title;
-    public string Author;
+    public int MonthNumber;
+    public string Month;
+    public float TotalRevenue;
+    public int TotalQutantitySold;
 }
