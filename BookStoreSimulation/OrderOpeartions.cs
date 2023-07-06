@@ -31,7 +31,7 @@
         public void DisplayAllOrders()
         {
             GetDataFromFile();
-            Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPric -> DateOfPurchase");
+            Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPrice -> DateOfPurchase");
 
             Orders.ForEach(order =>
             {
@@ -49,8 +49,8 @@
             }
             else
             {
-                Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPric -> DateOfPurchase");
-                Console.WriteLine($"{order.Id} -> {order.CustomerId} -> {order.TotalQuantity} -> {order.TotalPrice}  ->  -> {order.DateOfPurchase}");
+                Console.WriteLine("\nId -> CustomerId -> TotalQuantity -> TotalPrice -> DateOfPurchase");
+                Console.WriteLine($"{order.Id} -> {order.CustomerId} -> {order.TotalQuantity} -> {order.TotalPrice}  -> {order.DateOfPurchase}");
             }
         }
 

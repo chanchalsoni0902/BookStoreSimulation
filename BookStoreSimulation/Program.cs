@@ -83,7 +83,7 @@ public class Program
                         // search and display book by title
                         Console.WriteLine("Enter author's name");
                         string title = Console.ReadLine();
-                        bookOperations.SearchAndDisplayBookByAuthor(title);
+                        bookOperations.SearchAndDisplayBookByTitle(title);
                         break;
 
                     // Orders

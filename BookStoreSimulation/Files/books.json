@@ -1,1 +1,92 @@
-[{"Id":1,"Title":"Data Science","Author":"DS","Price":55.0,"Quantity":2,"Version":0,"CreatedOn":"2023-06-30","UpdatedOn":"2023-06-30"},{"Id":2,"Title":"Fuzzy Logics","Author":"Fz","Price":80.0,"Quantity":3,"Version":1,"CreatedOn":"2023-06-30","UpdatedOn":"2023-06-30"},{"Id":3,"Title":"Python","Author":"Py","Price":70.0,"Quantity":2,"Version":1,"CreatedOn":"2023-06-30","UpdatedOn":"2023-06-30"},{"Id":4,"Title":"AI","Author":"Aii","Price":34.0,"Quantity":2,"Version":1,"CreatedOn":"2023-06-30","UpdatedOn":"2023-06-30"},{"Id":5,"Title":"Data Structure","Author":"Ds","Price":60.0,"Quantity":2,"Version":2,"CreatedOn":"2023-06-30","UpdatedOn":"2023-06-30"},{"Id":6,"Title":"DSA","Author":"Dsa","Price":70.0,"Quantity":5,"Version":1,"CreatedOn":"2023-07-03","UpdatedOn":"2023-07-03"},{"Id":7,"Title":"OS","Author":"os","Price":50.0,"Quantity":5,"Version":1,"CreatedOn":"2023-07-03","UpdatedOn":"2023-07-03"},{"Id":8,"Title":"Web Dev","Author":"wd","Price":70.0,"Quantity":4,"Version":1,"CreatedOn":"2023-07-03","UpdatedOn":"2023-07-03"}]
+[
+  {
+    "Id": 1,
+    "Title": "Data Science",
+    "Author": "DS",
+    "Price": 55.0,
+    "Quantity": 2,
+    "Version": 0,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30"
+  },
+  {
+    "Id": 2,
+    "Title": "Fuzzy Logics",
+    "Author": "Fz",
+    "Price": 80.0,
+    "Quantity": 3,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30"
+  },
+  {
+    "Id": 3,
+    "Title": "Python",
+    "Author": "Py",
+    "Price": 70.0,
+    "Quantity": 2,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30"
+  },
+  {
+    "Id": 4,
+    "Title": "AI",
+    "Author": "Aii",
+    "Price": 34.0,
+    "Quantity": 2,
+    "Version": 1,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30"
+  },
+  {
+    "Id": 5,
+    "Title": "Data Structure",
+    "Author": "Ds",
+    "Price": 60.0,
+    "Quantity": 2,
+    "Version": 2,
+    "CreatedOn": "2023-06-30",
+    "UpdatedOn": "2023-06-30"
+  },
+  {
+    "Id": 6,
+    "Title": "DSA",
+    "Author": "Dsa",
+    "Price": 70.0,
+    "Quantity": 5,
+    "Version": 1,
+    "CreatedOn": "2023-07-03",
+    "UpdatedOn": "2023-07-03"
+  },
+  {
+    "Id": 7,
+    "Title": "OS",
+    "Author": "os",
+    "Price": 50.0,
+    "Quantity": 5,
+    "Version": 1,
+    "CreatedOn": "2023-07-03",
+    "UpdatedOn": "2023-07-03"
+  },
+  {
+    "Id": 8,
+    "Title": "Web Dev",
+    "Author": "wd",
+    "Price": 70.0,
+    "Quantity": 4,
+    "Version": 1,
+    "CreatedOn": "2023-07-03",
+    "UpdatedOn": "2023-07-03"
+  },
+  {
+    "Id": 9,
+    "Title": "javaa",
+    "Author": "jv",
+    "Price": 798.0,
+    "Quantity": 56,
+    "Version": 2,
+    "CreatedOn": "2023-07-06",
+    "UpdatedOn": "2023-07-06"
+  }
+]
